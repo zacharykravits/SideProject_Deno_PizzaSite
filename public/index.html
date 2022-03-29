@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Luigi's Pizza Parlor</title>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav id="navigationBar" class="w-full h-10 bor-b-1-black bg-white border-box pos-fixed">
+        <div class="flex justify-content-between align-items-center pt3 pb3 pr5 pl5">
+            <div class="flex align-items-center">
+                <button id="navigationBarMobileToggle" class="navigation-mobile-toggle w-5 flex cols-dir-column gap-2 mr5 hidden-sm">
+                    <div class="h-1 w-full bg-white"></div>
+                    <div class="h-1 w-full bg-white"></div>
+                    <div class="h-1 w-full bg-white"></div>
+                </button>
+                <a href="/" id="navigationBarLogo" class="flex t-no-decoration t-black">
+                    <div class="t-mono">
+                        <div class=""><p class="t-white pt0 pb0 mt0 mb0">Luigi's Pizza Parlor</p></div>
+                    </div>
+                </a>
+                <div class="w-2 h-7 bor-r-1-coolgrey mr5 ml5"></div>
+                <div class="hidden flex-sm">
+                    <a class="mr4 t-link" href="/index" >Home</a>
+                    <a class="mr4 t-link" href="/menu">Menu</a>
+                    <a class="mr4 t-link" href="/about">About</a>
+                </div>
+            </div>
+        </div>
+        <div id="navigationMobileBackdrop" class="hidden hidden-sm w-fullscreen fade-in">
+            <nav id="navigationMobileDrawer" class="bg-warmgrey-80 w-full h-full fade-in-left">
+                <div class="flex cols-dir-column pl5 pr5 pt7 pb7 border-box">
+                    <a class="mb4 t-link" href="/index" >Home</a>
+                    <a class="mb4 t-link" href="/menu">Menu</a>
+                    <a class="mb4 t-link" href="/about">About</a>
+                </div>  
+            </nav>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main>
+        <div class="max-width-container">
+            <h1 class="pt8 t-header-6 t-line-height-normal t-center">Truly the best pies in town</h1>
+            <p class="t-header-3 t-line-height-normal t-center">Authentic, memberable, and fresh.</p>
+            <a class="t-underline" href="/menu">Order online</a>
+        </div>
+        <div class="max-width-container">
+            <h2 class="t-header-5 t-center">Reviews</h2>
+            <div class="flex gap-4 justify-content-around t-center">
+                <div>
+                    <p class="t-header-3">Best pizza in Brooklyn</p>
+                    <p class="t-header-1">Food & Wine magazine</p>
+                </div>
+                <div>
+                    <p class="t-header-3">Affordable and delicious pizza</p>
+                    <p class="t-header-1">bón appétit magazine</p>
+                </div>
+                <div>
+                    <p class="t-header-3">The secret is in their red sauce. The best in town.</p>
+                    <p class="t-header-1">Cook's Illustrated magazine</p>
+                </div>
+            </div>
+        </div>
+        <div class="max-width-container">
+            <h2 class="t-header-5 t-center">History</h2>
+            <p class="t-left">Ever since our grandfather Luigi Russo came to New York City from Sicily over 50 years ago and started a local pizza shop in Brooklyn, we have been steadfast in serving both quality New York style and Traditional Sicilian style pizza. </p>
+            <a href="/menu">More About Us</a>
+        </div>
+        <div class="max-width-container">
+            <h2 class="t-header-5">Hours</h2>
+            <div>
+                <p class="t-header-3">Mon-Thu: <span>11am - 11pm</span></p>
+                <p class="t-header-3">Fri-Sat: <span>11am - 2am</span></p>
+                <p class="t-header-3">Sun: <span>11am - 9pm</span></p>
+            </div>
+        </div>
+    </main>
+    <script src="./navigation.js"></script>
+</body>
+</html>

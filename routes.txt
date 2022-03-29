@@ -1,0 +1,42 @@
+About the customer: 
+    the shop is pick up only
+    you have 8 min to change or cancel order
+
+
+
+GET: home page
+    static index
+    static css
+    static navigation js
+    static cookie js
+
+GET: about page
+    static index
+    static css
+    static navigation js
+    static cookie js 
+
+GET: menu page
+    Mongo API data in JSON
+    static index
+    static css
+    static navigation js
+    static cookie js
+    static generate menu js
+        creates html elements from JSON and makes clickable
+    static add to order js
+        use cookies to store potential order information
+
+POST: create order
+    formData includes
+        ordered items
+        phone number
+        price
+        purchase time
+
+PUT: update item
+    check purchase time to see if within 8 min
+
+DELETE: cancel order
+    check purchase time to see if within 8 min
+
