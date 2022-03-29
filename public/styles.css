@@ -738,6 +738,242 @@ a:focus {
     margin: auto auto;
 }
 
+.t-white {
+    color: var(--white);
+}
+
+.t-black {
+    color: var(--black);
+}
+
+
+.t-black-opacity-10 {
+    color: var(--black-opacity-10);
+}
+
+.t-black-opacity-20 {
+    color: var(--black-opacity-20);
+}
+
+.t-black-opacity-30 {
+    color: var(--black-opacity-30);
+}
+
+.t-black-opacity-40 {
+    color: var(--black-opacity-40);
+}
+
+.t-black-opacity-50 {
+    color: var(--black-opacity-50);
+}
+
+.t-black-opacity-60 {
+    color: var(--black-opacity-60);
+}
+
+.t-black-opacity-70 {
+    color: var(--black-opacity-70);
+}
+
+.t-black-opacity-80 {
+    color: var(--black-opacity-80);
+}
+
+.t-black-opacity-90 {
+    color: var(--black-opacity-90);
+}
+
+.t-warmgrey-10 {
+    color: var(--warmgrey-10);
+}
+
+.t-warmgrey-20 {
+    color: var(--warmgrey-20);
+}
+
+.t-warmgrey-30 {
+    color: var(--warmgrey-30);
+}
+
+.t-warmgrey-40 {
+    color: var(--warmgrey-40);
+}
+
+.t-warmgrey-50 {
+    color: var(--warmgrey-50);
+}
+
+.t-warmgrey-60 {
+    color: var(--warmgrey-60);
+}
+
+.t-warmgrey-70 {
+    color: var(--warmgrey-70);
+}
+
+.t-warmgrey-80 {
+    color: var(--warmgrey-80);
+}
+
+.t-warmgrey-90 {
+    color: var(--warmgrey-90);
+}
+
+.t-warmgrey-100 {
+    color: var(--warmgrey-100);
+}
+
+.t-warmgrey-opacity-10 {
+    color: var(--warmgrey-opacity-10);
+}
+
+.t-warmgrey-opacity-20 {
+    color: var(--warmgrey-opacity-20);
+}
+
+.t-warmgrey-opacity-30 {
+    color: var(--warmgrey-opacity-30);
+}
+
+.t-warmgrey-opacity-40 {
+    color: var(--warmgrey-opacity-40);
+}
+
+.t-warmgrey-opacity-50 {
+    color: var(--warmgrey-opacity-50);
+}
+
+.t-warmgrey-opacity-60 {
+    color: var(--warmgrey-opacity-60);
+}
+
+.t-warmgrey-opacity-70 {
+    color: var(--warmgrey-opacity-70);
+}
+
+.t-warmgrey-opacity-80 {
+    color: var(--warmgrey-opacity-80);
+}
+
+.t-warmgrey-opacity-90 {
+    color: var(--warmgrey-opacity-90);
+}
+
+.t-coolgrey-10 {
+    color: var(--coolgrey-10);
+}
+
+.t-coolgrey-20 {
+    color: var(--coolgrey-20);
+}
+
+.t-coolgrey-30 {
+    color: var(--coolgrey-30);
+}
+
+.t-coolgrey-40 {
+    color: var(--coolgrey-40);
+}
+
+.t-coolgrey-50 {
+    color: var(--coolgrey-50);
+}
+
+.t-coolgrey-60 {
+    color: var(--coolgrey-60);
+}
+
+.t-coolgrey-70 {
+    color: var(--coolgrey-70);
+}
+
+.t-coolgrey-80 {
+    color: var(--coolgrey-80);
+}
+
+.t-coolgrey-90 {
+    color: var(--coolgrey-90);
+}
+
+.t-coolgrey-100 {
+    color: var(--coolgrey-100);
+}
+
+.t-coolgrey-opacity-10 {
+    color: var(--coolgrey-opacity-10);
+}
+
+.t-coolgrey-opacity-20 {
+    color: var(--coolgrey-opacity-20);
+}
+
+.t-coolgrey-opacity-30 {
+    color: var(--coolgrey-opacity-30);
+}
+
+.t-coolgrey-opacity-40 {
+    color: var(--coolgrey-opacity-40);
+}
+
+.t-coolgrey-opacity-50 {
+    color: var(--coolgrey-opacity-50);
+}
+
+.t-coolgrey-opacity-60 {
+    color: var(--coolgrey-opacity-60);
+}
+
+.t-coolgrey-opacity-70 {
+    color: var(--coolgrey-opacity-70);
+}
+
+.t-coolgrey-opacity-80 {
+    color: var(--coolgrey-opacity-80);
+}
+
+.t-coolgrey-opacity-90 {
+    color: var(--coolgrey-opacity-90);
+}
+
+.t-red-10 {
+    color: var(--red-10);
+}
+
+.t-red-20 {
+    color: var(--red-20);
+}
+
+.t-red-30 {
+    color: var(--red-30);
+}
+
+.t-red-40 {
+    color: var(--red-40);
+}
+
+.t-red-50 {
+    color: var(--red-50);
+}
+
+.t-red-60 {
+    color: var(--red-60);
+}
+
+.t-red-70 {
+    color: var(--red-70);
+}
+
+.t-red-80 {
+    color: var(--red-80);
+}
+
+.t-red-90 {
+    color: var(--red-90);
+}
+
+.t-red-100 {
+    color: var(--red-100);
+}
 
 .t-no-decoration {
     text-decoration: none !important;
@@ -788,7 +1024,7 @@ a:focus {
         letter-spacing: .16px; 
     }
 
-    .t-body-regular {
+    p {
         font-size: 1rem;
         line-height: 1.5em;
         font-weight: 400;
@@ -847,7 +1083,7 @@ a:focus {
         letter-spacing: .16px; 
     }
 
-    .t-body-regular {
+    p {
         font-size: 1rem;
         line-height: 1.5em;
         font-weight: 400;
@@ -906,7 +1142,7 @@ a:focus {
         letter-spacing: .16px; 
     }
 
-    .t-body-regular {
+    p {
         font-size: 1rem;
         line-height: 1.5em;
         font-weight: 400;
@@ -965,7 +1201,7 @@ a:focus {
         letter-spacing: .16px; 
     }
 
-    .t-body-regular {
+    p {
         font-size: 1rem;
         line-height: 1.5em;
         font-weight: 400;
@@ -1043,6 +1279,22 @@ a:focus {
 
 .flex {
     display: flex;
+}
+
+.cols-dir-normal {
+    flex-direction: row
+}
+
+.cols-dir-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.cols-dir-column {
+    flex-direction: column;
+}
+
+.cols-dir-column-reverse {
+    flex-direction: column-reverse;
 }
 
 .gap-1 {
@@ -1791,6 +2043,11 @@ a:focus {
     position: sticky;
 }
 
+.pos-absolute-center {
+    justify-self: center;
+    align-self: center;
+}
+
 .pos-t-0 {
     top: 0px;
 }
@@ -1809,6 +2066,14 @@ a:focus {
 
 .pos-t-4 {
     top: var(--s-16);
+}
+
+.pos-t-5 {
+    top: var(--s-24);
+}
+
+.pos-t-6 {
+    top: var(--s-32);
 }
 
 .pos-r-0 {
