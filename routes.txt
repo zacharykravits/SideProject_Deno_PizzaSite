@@ -5,20 +5,20 @@ About the customer:
 
 
 GET: home page
-    static index
+    static html
     static css
     static navigation js
     static cookie js
 
 GET: about page
-    static index
+    static html
     static css
     static navigation js
     static cookie js 
 
 GET: menu page
     Mongo API data in JSON
-    static index
+    static html
     static css
     static navigation js
     static cookie js

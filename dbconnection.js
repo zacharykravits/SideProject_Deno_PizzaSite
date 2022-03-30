@@ -12,4 +12,6 @@ const BASE_URI = `https://data.mongodb-api.com/app/${APP_ID}/endpoint/data/beta/
 // You also need information about the database, database source (the cluster), and collections
 const DATA_SOURCE = "Cluster0";
 const DATABASE = "pizzaSiteProject";
-const COLLECTION = "menu";
+const MENU_COLLECTION = "menu";
+const ADDITIONS_COLLECTION = "additions";
+const ORDERS_COLLECTION = 'orders';

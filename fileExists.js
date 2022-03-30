@@ -1,12 +1,19 @@
-export async function checkForFile(path, pathname) {
+export async function checkForFile(pathname) {
+
+    let pathToTest;
+    pathname === '/' ? 
+        pathToTest = `${Deno.cwd()}/public/index.html` :
+        pathToTest = `${Deno.cwd()}/public${pathname}`
+    
+    // console.log('pathToTest: ', pathToTest)
+
     try {
-        const stats = await Deno.stat(path);
-        return stats
-    } catch(error) {
-        if (error && error instanceof Deno.errors.NotFound) {
+        await Deno.stat(pathToTest);
+        return true;
+    } catch (error) {
+        if (error instanceof Deno.errors.NotFound) {
             return false;
-        } else {
-            throw error;
         }
     }
+
 }

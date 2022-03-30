@@ -3,21 +3,53 @@ import { checkForFile } from "./fileExists.js";
 
 async function handler(request) {
     const url = new URL(request.url);
-    let pathname;
-    url.pathname === '/' ?
-        pathname = '/index.html' :
-        pathname = url.pathname;
-    const pathnameExtension = url.pathname.split('.')[1];
+    const pathname = url.pathname;
     const path = `${Deno.cwd()}/public${pathname}`;
 
-    if (await checkForFile(path, pathname)) {
-        const staticFile = await Deno.readFile(path);
-        return new Response(staticFile)
+    if (url.pathname === '/' || url.pathname === '/index.html') {
+        return new Response(
+            await Deno.readFile(`${Deno.cwd()}/public/index.html`), {
+                headers: {
+                    'Content-Type': 'text/html'
+                }
+            }
+        )
+    } else if (url.pathname === '/about' || url.pathname === '/about.html') {
+        return new Response(
+            await Deno.readFile(`${Deno.cwd()}/public/about.html`), {
+                headers: {
+                    'Content-Type': 'text/html'
+                }
+            }
+        )
+    } else if (url.pathname === '/menu' || url.pathname === '/menu.html') {
+        return new Response(
+            await Deno.readFile(`${Deno.cwd()}/public/menu.html`), {
+                headers: {
+                    'Content-Type': 'text/html'
+                }
+            }
+        )
+    } else if (url.pathname === '/404' || url.pathname === '/404.html') {
+        return new Response(
+            await Deno.readFile(`${Deno.cwd()}/public/404.html`), {
+                headers: {
+                    'Content-Type': 'text/html',
+                    'Status': '404 Not Found'
+                }
+            }
+        )
+    } else {
+
+        if (await checkForFile(pathname) === false) {
+            return Response.redirect('http://localhost:8080/404.html')
+        }
+
+        return new Response(
+            await Deno.readFile(`${Deno.cwd()}/public${pathname}`)
+        )
     }
 
-    return new Response(
-        await Deno.readFile(`${Deno.cwd()}/public${pathname}.${pathnameExtension}`)
-    )
 }
 
 serve(handler, { port: 8080 });
