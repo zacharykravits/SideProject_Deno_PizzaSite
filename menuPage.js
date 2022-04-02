@@ -71,15 +71,86 @@ export const menuPage = (menuItems, additionalItems) => {
                 <div>
                     <h2 class="t-header-5 t-center">Reviews</h2>
                     <div>
+                        <h3>New York Style</h3>
+                        <div>
                         ${
                             menuItems.map((item, index) => {
-                                return `
-                                    <div>
-                                        <p>${item.name}</p>
-                                    </div>
-                                `
+                                if (item.available === true && item.category === 'New York Style') {                                    
+                                    return `
+                                        <div>
+                                            <p>${item.name}</p>
+                                            <p>${item.description}</p>
+                                            <p>${item.basePrice}</p>
+                                        </div>
+                                    `
+                                }
                             })
                         }
+                        </div>
+                        <h3>Traditional Sicilian</h3>
+                        <div>
+                        ${
+                            menuItems.map((item, index) => {
+                                if (item.available === true && item.category === 'Traditional Sicilian') {                                    
+                                    return `
+                                        <div>
+                                            <p>${item.name}</p>
+                                            <p>${item.description}</p>
+                                            <p>${item.basePrice}</p>
+                                        </div>
+                                    `
+                                }
+                            })
+                        }
+                        </div>
+                        <h3>Calzones</h3>
+                        <div>
+                        ${
+                            menuItems.map((item, index) => {
+                                if (item.available === true && item.category === 'Calzones') {
+                                    return `
+                                        <div>
+                                            <p>${item.name}</p>
+                                            <p>${item.description}</p>
+                                            <p>${item.basePrice}</p>
+                                        </div>
+                                    `
+                                }
+                            })
+                        }
+                        </div>
+                        <h3>Appetizers</h3>
+                        <div>
+                        ${
+                            menuItems.map((item, index) => {
+                                if (item.available === true && item.category === 'Appetizers') {
+                                    return `
+                                        <div>
+                                            <p>${item.name}</p>
+                                            <p>${item.description}</p>
+                                            <p>${item.basePrice}</p>
+                                        </div>
+                                    `
+                                }
+                            })
+                        }
+                        </div>
+                        <h3>Calzones</h3>
+                        <div>
+                        ${
+                            menuItems.map((item, index) => {
+                                if (item.available === true && item.category === 'Beverages') {
+                                    return `
+                                        <div>
+                                            <p>${item.name}</p>
+                                            <p>${item.description}</p>
+                                            <p>${item.basePrice}</p>
+                                        </div>
+                                    `
+                                }
+                            })
+                        }
+                        </div>
                     </div>
                 </div>
             </main>
