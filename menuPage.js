@@ -84,7 +84,7 @@ export const menuPage = (menuItems, additionalItems) => {
                                         </div>
                                     `
                                 }
-                            })
+                            }).join('')
                         }
                         </div>
                         <h3>Traditional Sicilian</h3>
@@ -100,7 +100,7 @@ export const menuPage = (menuItems, additionalItems) => {
                                         </div>
                                     `
                                 }
-                            })
+                            }).join('')
                         }
                         </div>
                         <h3>Calzones</h3>
@@ -116,7 +116,7 @@ export const menuPage = (menuItems, additionalItems) => {
                                         </div>
                                     `
                                 }
-                            })
+                            }).join('')
                         }
                         </div>
                         <h3>Appetizers</h3>
@@ -132,7 +132,7 @@ export const menuPage = (menuItems, additionalItems) => {
                                         </div>
                                     `
                                 }
-                            })
+                            }).join('')
                         }
                         </div>
                         <h3>Calzones</h3>
@@ -148,7 +148,7 @@ export const menuPage = (menuItems, additionalItems) => {
                                         </div>
                                     `
                                 }
-                            })
+                            }).join('')
                         }
                         </div>
                     </div>
