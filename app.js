@@ -76,12 +76,20 @@ async function handler(request) {
         console.log("additionItems: ", additionItems)
 
         // console.log(config({ safe: true }))
-
         const menuItemsFromDB = menuItems.documents;
         const additionalItemsFromDB = additionItems.documents;
+        let categories = [];
+
+        menuItemsFromDB.forEach(item => {
+            console.log(item);
+            categories.includes(item.category) ?
+                console.log('already in the array') :
+                categories.push(item.category);
+            console.log("categories: ", categories)
+        });
 
         return new Response(
-            await menuPage(menuItemsFromDB, additionalItemsFromDB), {
+            await menuPage(categories, menuItemsFromDB, additionalItemsFromDB), {
                 headers: {
                     'Content-Type': 'text/html'
                 }

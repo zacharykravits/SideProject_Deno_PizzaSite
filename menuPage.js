@@ -1,18 +1,18 @@
-// import { DOMParser } from "https://deno.land/x/deno_dom/deno-dom-wasm.ts";
+// // import { DOMParser } from "https://deno.land/x/deno_dom/deno-dom-wasm.ts";
 
-const createMenu = (items, toppings) => {
-    // return items
-    // console.log("items: ", items)
+// const createMenu = (items, toppings) => {
+//     // return items
+//     // console.log("items: ", items)
 
     
-    items.forEach((item, index) => {
-        console.log("item: ", item.name)
-        // const itemElement = new DOMParser().parseFromString(`<div>hello</div>`)
-        return item
-    });
-}
+//     items.forEach((item, index) => {
+//         console.log("item: ", item.name)
+//         // const itemElement = new DOMParser().parseFromString(`<div>hello</div>`)
+//         return item
+//     });
+// }
 
-export const menuPage = (menuItems, additionalItems) => {
+export const menuPage = (categories, menuItems, additionalItems) => {
     return `
         <!DOCTYPE html>
         <html lang="en">
@@ -71,83 +71,33 @@ export const menuPage = (menuItems, additionalItems) => {
                 <div>
                     <h2 class="t-header-5 t-center">Reviews</h2>
                     <div>
-                        <h3>New York Style</h3>
-                        <div>
                         ${
-                            menuItems.map((item, index) => {
-                                if (item.available === true && item.category === 'New York Style') {                                    
-                                    return `
+                            categories.map((category, index, array) => {
+                                return `
+                                    <div>
+                                        <h3>${category}</h3>
                                         <div>
-                                            <p>${item.name}</p>
-                                            <p>${item.description}</p>
-                                            <p>${item.basePrice}</p>
+                                            ${
+                                                menuItems.map((item, index) => {
+                                                    if (item.available === true && item.category === category) {
+
+                                                        console.log("basePrice: ", item.basePrice)
+                                                        console.log("toString: ", item.basePrice)
+
+                                                        return `
+                                                            <div class="">
+                                                                <p>${item.name}</p>
+                                                                <p>${item.description}</p>
+                                                                <p>${item.basePrice}</p>
+                                                                <button data-name="${item.name}" data-baseprice="${item.basePrice}" data-allowsadditions="${item.allowsAdditions}">Add To Cart</button>
+                                                            </div>
+                                                        `
+                                                    }
+                                                }).join('')
+                                            }
                                         </div>
-                                    `
-                                }
-                            }).join('')
-                        }
-                        </div>
-                        <h3>Traditional Sicilian</h3>
-                        <div>
-                        ${
-                            menuItems.map((item, index) => {
-                                if (item.available === true && item.category === 'Traditional Sicilian') {                                    
-                                    return `
-                                        <div>
-                                            <p>${item.name}</p>
-                                            <p>${item.description}</p>
-                                            <p>${item.basePrice}</p>
-                                        </div>
-                                    `
-                                }
-                            }).join('')
-                        }
-                        </div>
-                        <h3>Calzones</h3>
-                        <div>
-                        ${
-                            menuItems.map((item, index) => {
-                                if (item.available === true && item.category === 'Calzones') {
-                                    return `
-                                        <div>
-                                            <p>${item.name}</p>
-                                            <p>${item.description}</p>
-                                            <p>${item.basePrice}</p>
-                                        </div>
-                                    `
-                                }
-                            }).join('')
-                        }
-                        </div>
-                        <h3>Appetizers</h3>
-                        <div>
-                        ${
-                            menuItems.map((item, index) => {
-                                if (item.available === true && item.category === 'Appetizers') {
-                                    return `
-                                        <div>
-                                            <p>${item.name}</p>
-                                            <p>${item.description}</p>
-                                            <p>${item.basePrice}</p>
-                                        </div>
-                                    `
-                                }
-                            }).join('')
-                        }
-                        </div>
-                        <h3>Calzones</h3>
-                        <div>
-                        ${
-                            menuItems.map((item, index) => {
-                                if (item.available === true && item.category === 'Beverages') {
-                                    return `
-                                        <div>
-                                            <p>${item.name}</p>
-                                            <p>${item.description}</p>
-                                            <p>${item.basePrice}</p>
-                                        </div>
-                                    `
-                                }
+                                    </div>
+                                `
                             }).join('')
                         }
                         </div>
