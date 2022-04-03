@@ -89,7 +89,7 @@ export const menuPage = (categories, menuItems, additionalItems) => {
                                                                 <p>${item.name}</p>
                                                                 <p>${item.description}</p>
                                                                 <p>${item.basePrice}</p>
-                                                                <button data-name="${item.name}" data-baseprice="${item.basePrice}" data-allowsadditions="${item.allowsAdditions}">Add To Cart</button>
+                                                                <button class="addToCart" data-name="${item.name}" data-baseprice="${item.basePrice}" data-allowsadditions="${item.allowsAdditions}">Add To Cart</button>
                                                             </div>
                                                         `
                                                     }
@@ -102,6 +102,22 @@ export const menuPage = (categories, menuItems, additionalItems) => {
                         }
                         </div>
                     </div>
+                </div>
+
+                <div>
+                        <div>
+                            <h2 id="itemName"></h2>
+                            <p id="itemBasePrice></p>
+                            <p>Want to add some toppings?</p>
+                            <div>
+                                <p>Amount: </p>
+                                <button>-</button>
+                                <button>+</button>
+                            </div>
+                            <div id="itemAdditions">
+
+                            </div>
+                        </div>
                 </div>
             </main>
             <script src="./navigation.js"></script>
