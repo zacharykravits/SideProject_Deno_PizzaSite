@@ -431,6 +431,78 @@ a:focus {
     height: var(--s-402);
 }
 
+.h-fit {
+    height: fit-content;
+}
+
+.h-max {
+    height: max-content;
+}
+
+.h-min {
+    height: min-content;
+}
+
+.h-full {
+    height: 100% !important;
+}
+
+.h-auto {
+    height: auto;
+}
+
+.h-fullscreen {
+    height: 100vh;
+}
+
+.h-halfscreen {
+    height: 50vh;
+}
+
+.h-fullscreen-minus-2px {
+    height: calc(100vh - var(--s-2));
+}
+
+.h-fullscreen-minus-4px {
+    height: calc(100vh - var(--s-4));
+}
+
+.h-fullscreen-minus-8px {
+    height: calc(100vh - var(--s-8));
+}
+
+.h-fullscreen-minus-16px {
+    height: calc(100vh - var(--s-16));
+}
+
+.h-fullscreen-minus-24px {
+    height: calc(100vh - var(--s-24));
+}
+
+.h-fullscreen-minus-32px {
+    height: calc(100vh - var(--s-32));
+}
+
+.h-fullscreen-minus-40px {
+    height: calc(100vh - var(--s-40));
+}
+
+.h-fullscreen-minus-48px {
+    height: calc(100vh - var(--s-48));
+}
+
+.h-fullscreen-minus-56px {
+    height: calc(100vh - var(--s-56));
+}
+
+.h-fullscreen-minus-64px {
+    height: calc(100vh - var(--s-64));
+}
+
+.h-fullscreen-minus-72px {
+    height: calc(100vh - var(--s-72));
+}
+
 /* WIDTH */
 
 .w-fit {

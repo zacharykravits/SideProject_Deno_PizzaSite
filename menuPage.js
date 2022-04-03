@@ -20,10 +20,11 @@ export const menuPage = (categories, menuItems, additionalItems) => {
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="./reset.css">
             <link rel="stylesheet" href="./styles.css">
             <title>Document</title>
         </head>
-        <body>
+        <body class="pos-relative">
             <!-- Navigation -->
             <nav id="navigationBar" class="w-full h-10 bor-b-1-black bg-warmgrey-90 border-box pos-fixed">
                 <div class="flex justify-content-between align-items-center pt3 pb3 pr5 pl5">
@@ -104,22 +105,24 @@ export const menuPage = (categories, menuItems, additionalItems) => {
                     </div>
                 </div>
 
-                <div>
-                        <div>
-                            <h2 id="itemName"></h2>
+                </main>
+                <div id="addToCartModal" class="hidden pos-absolute pos-z-99 pos-t-4 w-full h-fullscreen bg-black-opacity-40">
+                        <div class="bg-white w-full">
+                            <h2 id="itemName">hello world</h2>
                             <p id="itemBasePrice></p>
-                            <p>Want to add some toppings?</p>
                             <div>
-                                <p>Amount: </p>
-                                <button>-</button>
-                                <button>+</button>
+                            <p>Amount: </p>
+                            <button>-</button>
+                            <button>+</button>
                             </div>
-                            <div id="itemAdditions">
+                            <div id="itemAdditionsSection" class="hidden">
+                                <p>Want to add some toppings?</p>
+                                <div id="itemAdditions">
 
+                                </div>
                             </div>
                         </div>
                 </div>
-            </main>
             <script src="./navigation.js"></script>
             <script src="./addItem.js"></script>
         </body>
