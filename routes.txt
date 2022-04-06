@@ -21,9 +21,8 @@ GET: menu page
     static html
     static css
     static navigation js
-    static cookie js
-    static generate menu js
-        creates html elements from JSON and makes clickable
+    static menu js
+        creates buttons open modal
     static add to order js
         use cookies to store potential order information
 

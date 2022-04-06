@@ -107,24 +107,34 @@ export const menuPage = (categories, menuItems, additionalItems) => {
 
                 </main>
                 <div id="addToCartModal" class="hidden pos-absolute pos-z-99 pos-t-4 w-full h-fullscreen bg-black-opacity-40">
-                        <div class="bg-white w-full">
-                            <h2 id="itemName">hello world</h2>
-                            <p id="itemBasePrice></p>
-                            <div>
-                            <p>Amount: </p>
-                            <button>-</button>
-                            <button>+</button>
-                            </div>
+                        <form id="addToCartForm" class="bg-white w-full">
+                            <h2 id="itemName"></h2>
+                            <p id="itemBasePrice"></p>
+                            <input type="hidden" id="formData-itemName">
+                            <input type="hidden" id="formData-itemName">
+                            <input type="number" id="count" min="1" max="25" value="1">
                             <div id="itemAdditionsSection" class="hidden">
                                 <p>Want to add some toppings?</p>
                                 <div id="itemAdditions">
-
+                                    ${
+                                        additionalItems.map((addition, index) => {
+                                            console.log('addition: ', addition);
+                                            return `
+                                                <div>
+                                                    <p>${addition.name} (+$${addition.price})</p>
+                                                    <input data-name="${addition.name}" data-price="${addition.price}" type="checkbox">
+                                                </div>
+                                            `
+                                        }).join("")
+                                    }
                                 </div>
                             </div>
-                        </div>
+                            <button id="finalizeAdding">Add</button>
+                        </form>
                 </div>
             <script src="./navigation.js"></script>
             <script src="./addItem.js"></script>
+            <script src="./addToOrder.js"></script>
         </body>
         </html>
         `

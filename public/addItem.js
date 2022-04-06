@@ -4,9 +4,10 @@ const itemNamePlaceHolder = document.getElementById('itemName');
 const itemBasePricePlaceHolder = document.getElementById('itemBasePrice');
 const itemAdditionsSection = document.getElementById('itemAdditionsSection');
 const itemAdditionsPlaceHolder = document.getElementById('itemAdditions');
+const formData_ItemNamePlaceHolder = document.getElementById('formData-itemName');
+const formData_ItemBasePricePlaceHolder = document.getElementById('formData-itemBasePrice');
 
 const addToCartButtons = document.getElementsByClassName('addToCart');
-
 const addToCartButtonsArray = Array.from(addToCartButtons);
 
 addToCartButtonsArray.forEach((button, index, array) => {
@@ -21,20 +22,12 @@ addToCartButtonsArray.forEach((button, index, array) => {
             addToCartModal.classList.remove('hidden');
             
             itemNamePlaceHolder.innerText = itemName;
+            formData_ItemNamePlaceHolder.value = itemName;
+            formData_ItemBasePricePlaceHolder.value = itemBasePrice;
+                
             itemBasePricePlaceHolder.innerText = itemBasePrice;
             if (itemAllowsAdditions === "true") {
                 itemAdditionsSection.classList.remove('hidden');
-                //
-                array.map((addition, index) => {
-                    console.log(topping);
-
-                    return `
-                        <div>
-                            <p>${addition.name} - ${addition.price}</p>
-                            <input id="${addition.name}" type="checkbox">
-                        </div>
-                    `
-                }).join("")
             }
         }
     })

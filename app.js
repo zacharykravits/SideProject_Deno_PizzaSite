@@ -100,7 +100,7 @@ async function handler(request) {
             await Deno.readFile(`${Deno.cwd()}/public/404.html`), {
                 headers: {
                     'Content-Type': 'text/html',
-                    'Status': '404 Not Found'
+                    'Status': `${Deno.errors.NotFound}`
                 }
             }
         )
