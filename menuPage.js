@@ -1,17 +1,3 @@
-// // import { DOMParser } from "https://deno.land/x/deno_dom/deno-dom-wasm.ts";
-
-// const createMenu = (items, toppings) => {
-//     // return items
-//     // console.log("items: ", items)
-
-    
-//     items.forEach((item, index) => {
-//         console.log("item: ", item.name)
-//         // const itemElement = new DOMParser().parseFromString(`<div>hello</div>`)
-//         return item
-//     });
-// }
-
 export const menuPage = (categories, menuItems, additionalItems) => {
     return `
         <!DOCTYPE html>
