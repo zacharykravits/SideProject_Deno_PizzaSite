@@ -1,7 +1,6 @@
 import { serve } from "./deps.js";
 import { config } from "./deps.js";
 import { checkForFile } from "./fileExists.js";
-import { menuPage } from './menuPage.js';
 
 // .env file
 // The .env file is a plain text file that contains information
@@ -40,7 +39,22 @@ async function handler(request) {
             }
         )
     } else if (url.pathname === '/menu' || url.pathname === '/menu.html') {
+        return new Response(
+            await Deno.readFile(`${Deno.cwd()}/public/menu.html`), {
+                headers: {
+                    'Content-Type': 'text/html'
+                }
+            }
+        )
 
+        // return new Response(
+        //     await menuPage(categories, menuItemsFromDB, additionalItemsFromDB), {
+        //         headers: {
+        //             'Content-Type': 'text/html'
+        //         }
+        //     }
+        // )
+    } else if (url.pathname === '/get-menu-data') {
         const URI = `${BASE_URI}/find`;
 
         const query_menu = {
@@ -65,15 +79,15 @@ async function handler(request) {
 
         options.body = JSON.stringify(query_menu)
         const dataForMenu = await fetch(URI, options)
-        console.log('data: ', dataForMenu)
+        // console.log('data: ', dataForMenu)
         const menuItems = await dataForMenu.json();
-        console.log("menuItems: ", menuItems);
+        // console.log("menuItems: ", menuItems);
 
         options.body = JSON.stringify(query_additions)
         const dataForAdditions = await fetch(URI, options);
-        console.log('data: ', dataForAdditions)
+        // console.log('data: ', dataForAdditions)
         const additionItems = await dataForAdditions.json();
-        console.log("additionItems: ", additionItems)
+        // console.log("additionItems: ", additionItems)
 
         // console.log(config({ safe: true }))
         const menuItemsFromDB = menuItems.documents;
@@ -81,20 +95,22 @@ async function handler(request) {
         let categories = [];
 
         menuItemsFromDB.forEach(item => {
-            console.log(item);
-            categories.includes(item.category) ?
-                console.log('already in the array') :
+            // console.log(item);
+            if (categories.includes(item.category)) {
                 categories.push(item.category);
-            console.log("categories: ", categories)
+            }
         });
 
-        return new Response(
-            await menuPage(categories, menuItemsFromDB, additionalItemsFromDB), {
-                headers: {
-                    'Content-Type': 'text/html'
-                }
+        const data = {
+            items: menuItems,
+            additions: additionItems
+        }
+
+        return new Response(await JSON.stringify(data), {
+            headers: {
+                'Content-Type': 'application/json'
             }
-        )
+        })
     } else if (url.pathname === '/404' || url.pathname === '/404.html') {
         return new Response(
             await Deno.readFile(`${Deno.cwd()}/public/404.html`), {

@@ -17,14 +17,18 @@ GET: about page
     static cookie js 
 
 GET: menu page
-    Mongo API data in JSON
     static html
     static css
     static navigation js
     static menu js
-        creates buttons open modal
-    static add to order js
-        use cookies to store potential order information
+        fetches data from Mongo API data in JSON
+        builds menu based on
+    static cart js
+        onclick handler to add to cart
+        use cookies to store order information before sending the order
+
+GET: menu data
+    get JSON from Mongo API
 
 POST: create order
     formData includes

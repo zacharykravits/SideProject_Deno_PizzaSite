@@ -55,47 +55,43 @@ export const menuPage = (categories, menuItems, additionalItems) => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h2 class="t-header-5 t-center">Reviews</h2>
-                    <div>
-                        ${
-                            categories.map((category, index, array) => {
-                                return `
+                <div class="max-width-container m8">
+                    ${
+                        categories.map((category, index, array) => {
+                            return `
+                                <div>
+                                    <h3>${category}</h3>
                                     <div>
-                                        <h3>${category}</h3>
-                                        <div>
-                                            ${
-                                                menuItems.map((item, index) => {
-                                                    if (item.available === true && item.category === category) {
+                                        ${
+                                            menuItems.map((item, index) => {
+                                                if (item.available === true && item.category === category) {
 
-                                                        console.log("basePrice: ", item.basePrice)
-                                                        console.log("toString: ", item.basePrice)
+                                                    console.log("basePrice: ", item.basePrice)
+                                                    console.log("toString: ", item.basePrice)
 
-                                                        return `
-                                                            <div class="">
-                                                                <p>${item.name}</p>
-                                                                <p>${item.description}</p>
-                                                                <p>${item.basePrice}</p>
-                                                                <button class="addToCart" data-name="${item.name}" data-baseprice="${item.basePrice}" data-allowsadditions="${item.allowsAdditions}">Add To Cart</button>
-                                                            </div>
-                                                        `
-                                                    }
-                                                }).join('')
-                                            }
-                                        </div>
+                                                    return `
+                                                        <div>
+                                                            <p>${item.name}</p>
+                                                            <p>${item.description}</p>
+                                                            <p>${item.basePrice}</p>
+                                                            <button class="addToCart" data-name="${item.name}" data-baseprice="${item.basePrice}" data-allowsadditions="${item.allowsAdditions}">Add To Cart</button>
+                                                        </div>
+                                                    `
+                                                }
+                                            }).join('')
+                                        }
                                     </div>
-                                `
-                            }).join('')
-                        }
-                        </div>
-                    </div>
+                                </div>
+                            `
+                        }).join('')
+                    }
                 </div>
 
-                </main>
+            </main>
                 <div id="addToCartModal" class="hidden pos-absolute pos-z-99 pos-t-4 w-full h-fullscreen bg-black-opacity-40">
-                        <form id="addToCartForm" class="bg-white w-full">
+                        <form id="addToCartForm" class="bg-white w-full p8">
                             <h2 id="itemName"></h2>
-                            <p id="itemBasePrice"></p>
+                            <p><span id="itemBasePrice"></span> each</p>
                             <input type="hidden" id="formData-itemName">
                             <input type="hidden" id="formData-itemName">
                             <input type="number" id="count" min="1" max="25" value="1">
@@ -106,16 +102,16 @@ export const menuPage = (categories, menuItems, additionalItems) => {
                                         additionalItems.map((addition, index) => {
                                             console.log('addition: ', addition);
                                             return `
-                                                <div>
+                                                <div class="flex">
                                                     <p>${addition.name} (+$${addition.price})</p>
-                                                    <input data-name="${addition.name}" data-price="${addition.price}" type="checkbox">
+                                                    <input class="additional-item" data-name="${addition.name}" data-price="${addition.price}" type="checkbox">
                                                 </div>
                                             `
                                         }).join("")
                                     }
                                 </div>
                             </div>
-                            <button id="finalizeAdding">Add</button>
+                            <button id="pushToCart">Add</button>
                         </form>
                 </div>
             <script src="./navigation.js"></script>
