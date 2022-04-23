@@ -1,5 +1,7 @@
 let categories = [];
 
+const 
+
 const createCategories = (data) => {
     const items = data.items.documents
     console.log('items: ', items)
@@ -38,7 +40,7 @@ const renderItems = (data) => {
                         <p>${item.description}</p>
                         <p>${item.basePrice}</p>
                     </div>
-                    <button data-menu-item="${item.name}">Add</button>
+                    <button id=${index} data-menu-item="${item.name}">Add</button>
                 <div>
                 `
             )
@@ -51,18 +53,67 @@ const renderItems = (data) => {
                 `
             )
     })
-}
-
-const addButtonEventListeners = () => {
-
     const addButtons = document.querySelectorAll("[data-menu-item]");
     const addButtonsArray = Array.from(addButtons);
     addButtonsArray.forEach((button, index, array) => {
         button.addEventListener('click', (event) => {
             event.preventDefault();
-            console.log('button: ', button)
+            renderModal(button, data);
         })
     });
+}
+
+const renderModal = (buttonClicked, data) => {
+    const documentBody = document.getElementsByTagName('body');
+    const body = Array.from(documentBody)[0];
+    const buttonNumber = buttonClicked.id
+    console.log("body: ", body);
+    console.log("data: ", data)
+    data.items.documents[buttonNumber].allowsAdditions === true ?
+        body.insertAdjacentHTML('beforeend',
+            `
+            <div>
+                <div class="flex">
+                    <h2>${data.items.documents[buttonNumber].name}</h2>
+                    <button id="cancelChangesButton">Cancel</button>
+                </div>
+                <div>
+                    <p>Starting at $${data.items.documents[buttonNumber].basePrice}</p>
+                    <input type="number" min="1" max="25">
+                    <div>
+
+                        ${
+                            data.additions.documents.map((addition, index, array) => {
+                                return `
+                                    <div>
+                                        <div>
+                                            <input type="checkbox">${addition.name}
+                                        </div>
+                                        <p>${addition.price}</p>
+                                    </div>
+                                `
+                            }).join("")
+                        }
+                    </div>
+                </div>
+            </div>
+            `
+        )
+        :
+        body.insertAdjacentHTML('beforeend',
+            `
+            <div>
+                <div>
+                    <h2>${data.items.documents[buttonNumber].name}</h2>
+                    <button id="cancelChangesButton">Cancel</button>
+                </div>
+                <div>
+                    <p>Starting at $${data.items.documents[buttonNumber].basePrice}</p>
+                    <input type="number" min="1" max="25">
+                </div>
+            </div>
+            `
+        )
 }
 
 fetch('/get-menu-data')
@@ -71,6 +122,7 @@ fetch('/get-menu-data')
         createCategories(data);
         renderCategories(categories);
         renderItems(data);
-        addButtonEventListeners();
+        cancelChanges();
     })
     .catch((error) => { console.log(error) });
+
