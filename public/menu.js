@@ -1,14 +1,47 @@
 let categories = [];
 
-const 
+const editPrice = (buttonClicked, data) => {
+    const buttonNumber = buttonClicked.id;
+    const itemBasePrice = data.items.documents[buttonNumber].basePrice;
+    if (document.getElementById('additions')) {
+        const itemSubtotalDisplay = document.getElementById('item-subtotal')
+        const inputAdditions = document.querySelectorAll('[data-checkbox-input]')
+        const inputAdditionsArray = Array.from(inputAdditions);
+        let itemSubtotal = parseInt(itemBasePrice, 10);
+
+        // loop over inputs add on click handler
+        // on click
+        //// loop over inputs see what is selected
+        ////// if selected, add to subtotal
+
+        inputAdditionsArray.map((input, index, array) => {
+            input.addEventListener('click', () => {
+                inputAdditionsArray.forEach((input) => {
+                    if (input.checked) {
+                        itemSubtotal += parseInt(input.dataset.price, 10);
+                    }
+                })
+                itemSubtotalDisplay.innerHTML = itemSubtotal;
+            })
+        })
+    }
+}
+
+const cancelChanges = () => {
+    const modal = document.getElementById('modal');
+    const cancelButton = document.getElementById('cancelChangesButton');
+
+    cancelButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        modal.remove();
+    })
+}
 
 const createCategories = (data) => {
     const items = data.items.documents
-    console.log('items: ', items)
     items.map((item, index, array) => {
         if (!categories.includes(item.category)) {
             categories.push(item.category);
-            console.log(item.category)
         }
     })
 }
@@ -63,31 +96,64 @@ const renderItems = (data) => {
     });
 }
 
+const addItem = (basePrice) => {
+    let additionsForAddedItem = [];
+    const addItemButton = document.getElementById('addItemButton');
+    
+    addItemButton.addEventListener('click', (_event) => {
+        let subtotal = basePrice;
+        if (document.getElementById('additions')) {
+            console.log('additions do exist')
+            
+            const additionCheckboxes = document.querySelectorAll('[data-checkbox-addition]');
+            const additionCheckboxesArray = Array.from(additionCheckboxes);
+            additionCheckboxesArray.map((input, index, array) => {
+                if (input.checked) {
+                    const addition = {
+                        additionNumber: index,
+                        additionType: input.dataset.checkboxAddition,
+                        additionPrice: parseFloat(input.dataset.price, 10) 
+                    }
+                    additionsForAddedItem.push(addition);
+                    
+                    subtotal += addition.additionPrice;
+                }
+            })
+        }
+
+        let addItem = {
+            item: document.getElementById('typeOfItem').innerHTML,
+            numberOfItem: parseInt(document.getElementById('numberOfItem').value, 10),
+            additionsToItem: document.getElementById('additions') ? additionsForAddedItem : null,
+            subtotal: subtotal,
+        }
+
+        console.log('addedItem: ', addItem)
+    })
+}
+
 const renderModal = (buttonClicked, data) => {
     const documentBody = document.getElementsByTagName('body');
     const body = Array.from(documentBody)[0];
     const buttonNumber = buttonClicked.id
-    console.log("body: ", body);
-    console.log("data: ", data)
     data.items.documents[buttonNumber].allowsAdditions === true ?
         body.insertAdjacentHTML('beforeend',
             `
-            <div>
+            <div id="modal">
                 <div class="flex">
-                    <h2>${data.items.documents[buttonNumber].name}</h2>
+                    <h2 data-item-type=${data.items.documents[buttonNumber].name} id="typeOfItem">${data.items.documents[buttonNumber].name}</h2>
                     <button id="cancelChangesButton">Cancel</button>
                 </div>
                 <div>
-                    <p>Starting at $${data.items.documents[buttonNumber].basePrice}</p>
-                    <input type="number" min="1" max="25">
-                    <div>
-
+                    <p id="item-subtotal">$${data.items.documents[buttonNumber].basePrice}</p>
+                    <input id="numberOfItem" type="number" value="1" min="1" max="25">
+                    <div id="additions">
                         ${
                             data.additions.documents.map((addition, index, array) => {
                                 return `
                                     <div>
                                         <div>
-                                            <input type="checkbox">${addition.name}
+                                            <input data-checkbox-addition="${addition.name}" data-price="${addition.price}" type="checkbox">${addition.name}
                                         </div>
                                         <p>${addition.price}</p>
                                     </div>
@@ -95,6 +161,7 @@ const renderModal = (buttonClicked, data) => {
                             }).join("")
                         }
                     </div>
+                    <button id="addItemButton">Add to Cart</button>
                 </div>
             </div>
             `
@@ -102,18 +169,22 @@ const renderModal = (buttonClicked, data) => {
         :
         body.insertAdjacentHTML('beforeend',
             `
-            <div>
+            <div id="modal">
                 <div>
-                    <h2>${data.items.documents[buttonNumber].name}</h2>
+                    <h2 data-item-type=${data.items.documents[buttonNumber].name} id="typeOfItem">${data.items.documents[buttonNumber].name}</h2>
                     <button id="cancelChangesButton">Cancel</button>
                 </div>
                 <div>
-                    <p>Starting at $${data.items.documents[buttonNumber].basePrice}</p>
-                    <input type="number" min="1" max="25">
+                    <p>$${data.items.documents[buttonNumber].basePrice}</p>
+                    <input id="numberOfItem" type="number" min="1" max="25">
+                    <button id="addItemButton">Add to Cart</button>
                 </div>
             </div>
             `
         )
+    editPrice(buttonClicked, data);
+    cancelChanges();
+    addItem(data.items.documents[buttonNumber].basePrice);
 }
 
 fetch('/get-menu-data')
@@ -122,7 +193,5 @@ fetch('/get-menu-data')
         createCategories(data);
         renderCategories(categories);
         renderItems(data);
-        cancelChanges();
     })
     .catch((error) => { console.log(error) });
-
