@@ -51,9 +51,9 @@ const renderCategories = (categories) => {
         const menuArea = document.getElementById('menu-list');
         menuArea.insertAdjacentHTML('beforeend',
             `
-            <div class='w-full'>
-                <h3>${category}</h3>
-                <div data-category-section="${category}" class='full'></div>
+            <div class='w-full border-box'>
+                <h3 class="pt6 pb3 pr5 pl5">${category}</h3>
+                <div data-category-section="${category}" class='w-full border-box'></div>
             </div> 
             `
         )
@@ -67,20 +67,20 @@ const renderItems = (data) => {
         item.available === true ?
             categoryToRenderTo.insertAdjacentHTML('beforeend',
                 `
-                <div class='flex w-full justify-space-between'>
+                <div class='flex justify-content-between w-full pt3 pb3 pr5 pl5 border-box'>
                     <div>
                         <p>${item.name}</p>
                         <p>${item.description}</p>
-                        <p>${item.basePrice}</p>
+                        <p>$${item.basePrice}</p>
                     </div>
                     <button id=${index} data-menu-item="${item.name}">Add</button>
-                <div>
+                </div>
                 `
             )
             :
             categoryToRenderTo.insertAdjacentHTML('beforeend',
                 `
-                <div>
+                <div class="pt3 pb3 pr5 pl5">
                     <p>${item.name} - Not Available Right Now</p>
                 <div>
                 `
@@ -139,29 +139,31 @@ const renderModal = (buttonClicked, data) => {
     data.items.documents[buttonNumber].allowsAdditions === true ?
         body.insertAdjacentHTML('beforeend',
             `
-            <div id="modal">
-                <div class="flex">
-                    <h2 data-item-type=${data.items.documents[buttonNumber].name} id="typeOfItem">${data.items.documents[buttonNumber].name}</h2>
-                    <button id="cancelChangesButton">Cancel</button>
-                </div>
-                <div>
-                    <p id="item-subtotal">$${data.items.documents[buttonNumber].basePrice}</p>
-                    <input id="numberOfItem" type="number" value="1" min="1" max="25">
-                    <div id="additions">
-                        ${
-                            data.additions.documents.map((addition, index, array) => {
-                                return `
-                                    <div>
-                                        <div>
-                                            <input data-checkbox-addition="${addition.name}" data-price="${addition.price}" type="checkbox">${addition.name}
-                                        </div>
-                                        <p>${addition.price}</p>
-                                    </div>
-                                `
-                            }).join("")
-                        }
+            <div id="modal" class="pos-fixed pos-z-99 pos-t-0 bg-black-opacity-30 w-fullscreen h-fullscreen">
+                <div class="bg-white h-fullscreen-minus-56px w-fullscreen-minus-56px mx-auto my-auto p5 border-box">
+                    <div class="flex">
+                        <h2 data-item-type=${data.items.documents[buttonNumber].name} id="typeOfItem">${data.items.documents[buttonNumber].name}</h2>
+                        <button id="cancelChangesButton">Cancel</button>
                     </div>
-                    <button id="addItemButton">Add to Cart</button>
+                    <div>
+                        <p id="item-subtotal">$${data.items.documents[buttonNumber].basePrice}</p>
+                        <input id="numberOfItem" type="number" value="1" min="1" max="25">
+                        <div id="additions">
+                            ${
+                                data.additions.documents.map((addition, index, array) => {
+                                    return `
+                                        <div>
+                                            <div>
+                                                <input data-checkbox-addition="${addition.name}" data-price="${addition.price}" type="checkbox">${addition.name}
+                                            </div>
+                                            <p>${addition.price}</p>
+                                        </div>
+                                    `
+                                }).join("")
+                            }
+                        </div>
+                        <button id="addItemButton">Add to Cart</button>
+                    </div>
                 </div>
             </div>
             `
@@ -169,15 +171,17 @@ const renderModal = (buttonClicked, data) => {
         :
         body.insertAdjacentHTML('beforeend',
             `
-            <div id="modal">
-                <div>
-                    <h2 data-item-type=${data.items.documents[buttonNumber].name} id="typeOfItem">${data.items.documents[buttonNumber].name}</h2>
-                    <button id="cancelChangesButton">Cancel</button>
-                </div>
-                <div>
-                    <p>$${data.items.documents[buttonNumber].basePrice}</p>
-                    <input id="numberOfItem" type="number" min="1" max="25">
-                    <button id="addItemButton">Add to Cart</button>
+            <div id="modal" class="pos-fixed pos-z-99 pos-t-0 bg-black-opacity-30 w-fullscreen h-fullscreen">
+                <div class="bg-white h-fullscreen-minus-56px w-fullscreen-minus-56px mx-auto my-auto p5 border-box">                
+                    <div>
+                        <h2 data-item-type=${data.items.documents[buttonNumber].name} id="typeOfItem">${data.items.documents[buttonNumber].name}</h2>
+                        <button id="cancelChangesButton">Cancel</button>
+                    </div>
+                    <div>
+                        <p>$${data.items.documents[buttonNumber].basePrice}</p>
+                        <input id="numberOfItem" type="number" min="1" max="25">
+                        <button id="addItemButton">Add to Cart</button>
+                    </div>
                 </div>
             </div>
             `
