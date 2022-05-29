@@ -22,7 +22,7 @@ GET: menu page
     static navigation js
     static menu js
         fetches data from Mongo API data in JSON
-        builds menu based on
+        builds menu based on JSON
     static cart js
         onclick handler to add to cart
         use cookies to store order information before sending the order
