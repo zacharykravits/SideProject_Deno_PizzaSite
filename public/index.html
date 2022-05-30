@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./styles.css">
-
+    <link rel="stylesheet" href="./animation.css">
     <title>Luigi's Pizza Parlor - Home</title>
 </head>
 <body class="pos-relative">
@@ -36,17 +36,15 @@
             <nav id="navigationMobileDrawer" class="bg-warmgrey-80 w-full h-full fade-in-left">
                 <div class="flex cols-dir-column pl5 pr5 pt7 pb7 border-box">
                     <a class="mb4 t-link" href="/index.html" >Home</a>
-                    <a class="mb4 t-link" href="/menu.html">Menu</a>
                     <a class="mb4 t-link" href="/about.html">About</a>
                 </div>  
             </nav>
         </div>
     </nav>
 
-
     <!-- Main Content -->
     <main>
-        <div class="pt8 pos-relative t-white">
+        <section class="pt8 pos-relative t-white">
             <img src="./indexBgHeroImage.jpg" alt="image of new york style pizza" class="object-fit-cover h-51 w-full">
             <div class="pos-absolute pos-t-6 pos-z-2 flex w-fullscreen justify-content-around">
                 <div class="t-center flex cols-dir-column gap-3 ">
@@ -55,8 +53,8 @@
                     <a class="t-underline t-white" href="/menu.html">Order online</a>
                 </div>
             </div>
-        </div>
-        <div class="max-width-container flex gap-4 cols-dir-column">
+        </section>
+        <section class="max-width-container flex gap-4 cols-dir-column">
             <h2 class="t-header-5 t-center">Reviews</h2>
             <div class="flex gap-4 cols-dir-column justify-content-around t-center">
                 <div>
@@ -72,21 +70,29 @@
                     <p class="t-header-1">Cook's Illustrated magazine</p>
                 </div>
             </div>
-        </div>
-        <div class="max-width-container t-center flex cols-dir-column gap-3">
+        </section>
+        <section class="max-width-container t-center flex cols-dir-column gap-3">
             <h2 class="t-header-5 t-center">History</h2>
             <p>Ever since our grandfather Luigi Russo came to New York City from Sicily over 50 years ago and started a local pizza shop in Brooklyn, we have been steadfast in serving both quality New York style and Traditional Sicilian style pizza. </p>
             <a href="/menu.html">More About Us</a>
-        </div>
-        <div class="max-width-container t-center">
+        </section>
+        <section class="max-width-container">
+            <h2 class="t-header-5 t-center">Menu</h2>
+            <div id="menu-list" class="mt5 mb5">
+                <img id="spinner" src="./spinner.png" alt="loading spinner" class="spin-animation mx-auto my-auto">
+            </div>
+        </section>
+        <section class="max-width-container t-center">
             <h2 class="t-header-5">Hours</h2>
             <div>
                 <p class="t-header-3">Mon-Thu: <span>11am - 11pm</span></p>
                 <p class="t-header-3">Fri-Sat: <span>11am - 2am</span></p>
                 <p class="t-header-3">Sun: <span>11am - 9pm</span></p>
             </div>
-        </div>
+        </section>
     </main>
-    <script src="./navigation.js"></script>
+    <script src="navigation.js"></script>
+    <script src="scroll.js"></script>
+    <script src="menu.js"></script>
 </body>
 </html>

@@ -198,4 +198,7 @@ fetch('/get-menu-data')
         renderCategories(categories);
         renderItems(data);
     })
+    .then(() => {
+        document.getElementById('spinner').remove();
+    })
     .catch((error) => { console.log(error) });
